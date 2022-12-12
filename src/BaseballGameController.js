@@ -1,3 +1,4 @@
+const { Console } = require('@woowacourse/mission-utils');
 const BaseballGame = require('./BaseballGame');
 const InputView = require('./InputView');
 const OutputView = require('./OutputView');
@@ -26,7 +27,14 @@ class BaseballGameController {
     else this.inputUserCommand();
   }
 
-  inputUserCommand() {}
+  inputUserCommand() {
+    InputView.readUserCommand(input => {
+      if (input === '1') this.restartGame();
+      if (input === '2') Console.close();
+    });
+  }
+
+  restartGame() {}
 }
 
 module.exports = BaseballGameController;
