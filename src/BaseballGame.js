@@ -26,6 +26,18 @@ class BaseballGame {
 
     return count;
   }
+
+  getBallCount(userNumber) {
+    let count = 0;
+    const numbers = userNumber.split('').map(Number);
+    numbers.forEach((number, idx) => {
+      if (this.#answerNumber.includes(number) && this.#answerNumber.indexOf(number) !== idx) {
+        count += 1;
+      }
+    });
+
+    return count;
+  }
 }
 
 module.exports = BaseballGame;
