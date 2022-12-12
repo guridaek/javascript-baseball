@@ -16,25 +16,27 @@ class BaseballGameController {
   }
 
   inputUserNumber() {
-    InputView.readUserNumber(input => {
+    InputView.readUserNumber(userNumber => {
       OutputView.printHint(
-        this.#baseballGame.getBallCount(input),
-        this.#baseballGame.getStrikeCount(input),
+        this.#baseballGame.getBallCount(userNumber),
+        this.#baseballGame.getStrikeCount(userNumber),
       );
+      if (this.#baseballGame.getStrikeCount(userNumber) < 3) this.inputUserNumber();
+      else this.inputUserCommand();
     });
-
-    if (this.#baseballGame.getStrikeCount(input) < 3) this.inputUserNumber();
-    else this.inputUserCommand();
   }
 
   inputUserCommand() {
-    InputView.readUserCommand(input => {
-      if (input === '1') this.restartGame();
-      if (input === '2') Console.close();
+    InputView.readUserCommand(command => {
+      if (command === '1') this.restartGame();
+      if (command === '2') Console.close();
     });
   }
 
-  restartGame() {}
+  restartGame() {
+    this.#baseballGame.resetAnswerNumber();
+    this.inputUserNumber();
+  }
 }
 
 module.exports = BaseballGameController;

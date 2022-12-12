@@ -9,7 +9,7 @@ const InputView = {
   },
 
   readUserCommand(callback) {
-    Console.readLine('게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.', input => {
+    Console.readLine('게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n', input => {
       this.validateUserCommand(input);
       callback(input);
     });
@@ -20,7 +20,7 @@ const InputView = {
     if (numbers.includes(0) || numbers.includes(NaN)) {
       throw new Error('올바르지 않은 입력입니다.');
     }
-    if (new Set(numbers).size < 3) {
+    if (new Set(numbers).size !== 3) {
       throw new Error('중복된 숫자를 입력했습니다.');
     }
   },
