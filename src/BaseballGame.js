@@ -14,6 +14,18 @@ class BaseballGame {
     }
     this.#answerNumber = Array.from(numbers);
   }
+
+  getStrikeCount(userNumber) {
+    let count = 0;
+    const numbers = userNumber.split('').map(Number);
+    numbers.forEach((number, idx) => {
+      if (number === this.#answerNumber[idx]) {
+        count += 1;
+      }
+    });
+
+    return count;
+  }
 }
 
 module.exports = BaseballGame;
