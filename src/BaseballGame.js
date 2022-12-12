@@ -1,4 +1,4 @@
-const { Random } = require("@woowacourse/mission-utils");
+const { Random } = require('@woowacourse/mission-utils');
 
 class BaseballGame {
   #answerNumber;
@@ -8,7 +8,7 @@ class BaseballGame {
   }
 
   resetAnswerNumber() {
-    let numbers = new Set();
+    const numbers = new Set();
     while (numbers.size < 3) {
       numbers.add(Random.pickNumberInRange(1, 9));
     }
